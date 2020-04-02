@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class WarmUp {
     public static void main(String[] args) {
-        int[] list=new Random().ints(30,10,50).toArray();
+        int[] list=new Random().ints(30,10,40).toArray();
         int minSum=list[0]+list[1];
         int minIndex = 0;
         for (int i = 2; i <list.length-1 ; i++) {
