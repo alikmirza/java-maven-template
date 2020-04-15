@@ -31,6 +31,8 @@ public class CalcServlet extends HttpServlet {
             case "div":
                 result=x + "/" + y +"="+ (x/y);
                 break;
+            default:
+                System.out.println("There is no operation");
         }
 
         //////
