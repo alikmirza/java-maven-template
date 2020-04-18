@@ -1,4 +1,4 @@
-package February24;
+package February24.WarmUp;
 
 public class Formatter1 extends Formatter {
     String s;

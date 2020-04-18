@@ -1,12 +1,15 @@
-package StepProjectBooking;
+package StepProjectBooking.classes;
 
 public class Flight {
-    public final int id;
-    final String time;
-    final String destination;
-    final int freeSeats;
+    private   int id;
+    private  String time;
+    private  String destination;
+    private  int freeSeats;
 
-    public Flight(int id, String time, String destination, int freeSeats) {
+    public Flight() {
+    }
+
+    Flight(int id, String time, String destination, int freeSeats) {
         this.id = id;
         this.time = time;
         this.destination = destination;
@@ -17,16 +20,32 @@ public class Flight {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTime() {
         return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getDestination() {
         return destination;
     }
 
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
     public int getFreeSeats() {
         return freeSeats;
+    }
+
+    public void setFreeSeats(int freeSeats) {
+        this.freeSeats = freeSeats;
     }
 
     public static Flight parse(String line) {
@@ -46,7 +65,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return String.format("Flight[number=%d, time='%s', destination=%s, number of free seats=%d]", id, time, destination, freeSeats);
+        return String.format("Flight[number=%d, time='%s', destination=%s, number of free seats=%d]\n", id, time, destination, freeSeats);
     }
 
 }

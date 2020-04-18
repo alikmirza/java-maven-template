@@ -1,12 +1,9 @@
 package StepProjectBooking.dao;
 
-import StepProjectBooking.Book;
-import StepProjectBooking.Flight;
-import StepProjectBooking.FlightFinder;
+import StepProjectBooking.classes.Book;
+import StepProjectBooking.classes.FlightFinder;
 
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
@@ -20,9 +17,10 @@ public class DaoBookFile implements DAO<Book> {
         this.file=new File(filename);
     }
 
+
     @Override
-    public Optional<Book> getByID(int id) {
-        return Optional.empty();
+    public Optional<Book> getByID(int id){
+        return getAll().stream().filter(s -> s.getId() == id).findFirst();
     }
 
     @Override
@@ -35,28 +33,50 @@ public class DaoBookFile implements DAO<Book> {
     }
 
     @Override
-    public Collection<Book> getAllByİnfo(FlightFinder flightFinder) {
+    public Collection<Book> getMyFlights(String name, String surname) {
+        return getAll().stream().filter(book->book.getPassenger().getName().equalsIgnoreCase(name))
+                .filter(book -> book.getPassenger().getSurname().equalsIgnoreCase(surname)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<Book> getAllByInfo(FlightFinder flightFinder) {
         return null;
     }
 
-    @Override
-    public void infoOrBook(Book data) {
-
-    }
-
 
     @Override
-    public void rejectById(int id) {
+    public int exit(int command) { return 0; }
 
-    }
+    @Override
+    public Collection<Book> rejectById(int id) {
+        Collection<Book> books = getAll().stream().filter(book -> book.getId()!=id).collect(Collectors.toList());
+        clearAndWrite(books);
+        return books;
+        }
+
 
     @Override
     public void createAll(Collection<Book> data) {
         write(data);
     }
 
+    @Override
+    public void changeTheNumberOfFreeSeats(int id, int count) {
+
+    }
+
+
     private void write(Collection<Book> books) {
         try (FileWriter oos = new FileWriter(file,true)) {
+            oos.append(books.stream().map(Book::represent).collect(Collectors.joining("\n")));
+            oos.append("\n");
+        } catch (IOException ex) {
+            throw new RuntimeException("DAO:write:IOException", ex);
+        }
+    }
+
+    private void clearAndWrite(Collection<Book> books) {
+        try (FileWriter oos = new FileWriter(file,false)) {
             oos.append(books.stream().map(Book::represent).collect(Collectors.joining("\n")));
             oos.append("\n");
         } catch (IOException ex) {

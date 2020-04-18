@@ -30,6 +30,7 @@ public class CalcServlet extends HttpServlet {
                 break;
             case "div":
                 result=x + "/" + y +"="+ (x/y);
+                if (y==0) result="You are divided by 0!";
                 break;
             default:
                 System.out.println("There is no operation");

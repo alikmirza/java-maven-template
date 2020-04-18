@@ -17,9 +17,8 @@ public class StringOp {
     }
 
     public static void main(String[] args) {
-        StringOp stringOp=new StringOp();
         String ex="Hello";
-        System.out.println(stringOp.shift(ex,1,1));
+        System.out.println(shift(ex,1,1));
 
     }
 

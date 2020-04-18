@@ -1,4 +1,4 @@
-package February24;
+package February24.WarmUp;
 
 public class FormatterApp {
     public static void main(String[] args) {
@@ -6,9 +6,12 @@ public class FormatterApp {
 //        Formatter fmt2=new Formatter2();
 //        Formatter fmt3=new Formatter3();
 
-        System.out.println(new Formatter1("Hello"));
-        System.out.println(new Formatter2("Hello"));
-        System.out.println(new Formatter3("Hello"));
+
+
+
+//        System.out.println(new Formatter1("Hello"));
+//        System.out.println(new Formatter2("Hello"));
+//        System.out.println(new Formatter3("Hello"));
 
 //        fmt1.print("Hello Guys",fmt1);
 //        fmt2.print("Hello Guys",fmt2);

@@ -1,7 +1,7 @@
 package StepProjectBooking.dao;
 
-import StepProjectBooking.FlightFinder;
-import StepProjectBooking.Passenger;
+import StepProjectBooking.classes.FlightFinder;
+import StepProjectBooking.classes.Passenger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,9 +13,11 @@ public class DaoPassengerFile implements DAO<Passenger> {
 
     private File file;
 
-public DaoPassengerFile(String filename){
+    public DaoPassengerFile(String filename){
     this.file=new File(filename);
 }
+
+
 
     @Override
     public Optional<Passenger> getByID(int id) {
@@ -32,24 +34,30 @@ public DaoPassengerFile(String filename){
     }
 
     @Override
-    public Collection<Passenger> getAllByİnfo(FlightFinder flightFinder) {
+    public Collection<Passenger> getMyFlights(String name, String surname) {
+        return getAll().stream().filter(passenger->passenger.getName().equalsIgnoreCase(name)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<Passenger> getAllByInfo(FlightFinder flightFinder) {
         return null;
     }
 
-    @Override
-    public void infoOrBook(Passenger data) {
-
-    }
-
 
     @Override
-    public void rejectById(int id) {
+    public Collection<Passenger> rejectById(int id) { return null; }
 
-    }
+    @Override
+    public int exit(int command) { return 0; }
 
     @Override
     public void createAll(Collection<Passenger> data) {
         write(data);
+    }
+
+    @Override
+    public void changeTheNumberOfFreeSeats(int id, int count) {
+
     }
 
 

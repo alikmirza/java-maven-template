@@ -1,4 +1,4 @@
-package February24;
+package February24.WarmUp;
 
 public class Formatter2 extends Formatter {
 

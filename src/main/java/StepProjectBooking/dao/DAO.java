@@ -1,6 +1,6 @@
 package StepProjectBooking.dao;
 
-import StepProjectBooking.FlightFinder;
+import StepProjectBooking.classes.FlightFinder;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -8,9 +8,10 @@ import java.util.Optional;
 public interface DAO<A> {
     Optional<A> getByID(int id);
     Collection<A> getAll();
-    Collection<A> getAllByİnfo(FlightFinder flightFinder);
-    void infoOrBook(A data);
-    void rejectById(int id);
-
+    Collection<A> getAllByInfo(FlightFinder flightFinder);
+    Collection<A> getMyFlights(String name, String surname);
+    Collection<A> rejectById(int id);
+    int exit(int command);
     void createAll(Collection<A> data);
+    void changeTheNumberOfFreeSeats(int id, int count);
 }

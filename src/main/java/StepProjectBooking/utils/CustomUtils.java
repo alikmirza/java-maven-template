@@ -1,11 +1,10 @@
 package StepProjectBooking.utils;
 
-import StepProjectBooking.Book;
+import StepProjectBooking.classes.Book;
 import StepProjectBooking.controller.Controller;
-import StepProjectBooking.FlightFinder;
-import StepProjectBooking.Passenger;
+import StepProjectBooking.classes.FlightFinder;
+import StepProjectBooking.classes.Passenger;
 import StepProjectBooking.exception.CustomException;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,26 +16,8 @@ import java.util.Scanner;
 
 public class CustomUtils {
 
-
-    public static FlightFinder enterInfo() {
-        FlightFinder flightFinder = new FlightFinder();
-        Scanner in = new Scanner(System.in);
-        System.out.println("Destination: ");
-        flightFinder.setDestination(in.nextLine());
-        System.out.println("Enter time with this format {2020-02-02}");
-        LocalDate localDate = parseStringToLocalDate(in.nextLine());
-        while (localDate == null){
-        System.out.println("Please enter valid date : ");
-        localDate = parseStringToLocalDate(in.nextLine());
-    }
-        flightFinder.setTime(localDate);
-        System.out.println("Passenger count: ");
-        flightFinder.setPassengersCount(in.nextInt());
-        return flightFinder;
-}
-
     public static LocalDateTime parseStringToLocalDateTime(String date) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
         if (Objects.nonNull(date) && !date.trim().isEmpty()) {
             try {
                 return LocalDateTime.parse(date, dateTimeFormatter);
@@ -48,7 +29,7 @@ public class CustomUtils {
     }
 
     public static LocalDate parseStringToLocalDate(String date) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         if (Objects.nonNull(date) && !date.trim().isEmpty()) {
             try {
                 return LocalDate.parse(date, dateTimeFormatter);
@@ -59,7 +40,26 @@ public class CustomUtils {
         } else return null;
     }
 
-    public static String bookOrExit(Collection<String> flights, FlightFinder flightFinder) {
+
+    public static FlightFinder enterInfo() {
+        FlightFinder flightFinder = new FlightFinder();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Destination: ");
+        flightFinder.setDestination(in.nextLine());
+        System.out.println("Enter time in this format - - > {dd/MM/yyyy}");
+        LocalDate localDate = parseStringToLocalDate(in.nextLine());
+        while (localDate == null){
+            System.out.println("Please enter a valid date : ");
+            localDate = parseStringToLocalDate(in.nextLine());
+        }
+        flightFinder.setTime(localDate);
+        System.out.println("Passenger count: ");
+        flightFinder.setPassengersCount(in.nextInt());
+        return flightFinder;
+    }
+
+
+    public static String book(Collection<String> flights, FlightFinder flightFinder) {
         Controller controller = new Controller();
         System.out.println("1) If you want to book ticket\n" +
                 "* Please, enter the serial number of the flight: \n" +

@@ -1,4 +1,4 @@
-package StepProjectBooking;
+package StepProjectBooking.classes;
 
 import java.io.Serializable;
 
@@ -59,7 +59,7 @@ public class Book implements Serializable {
         final StringBuilder sb = new StringBuilder("Book{");
         sb.append("id=").append(id);
         sb.append(", flightId=").append(flightId);
-        sb.append(", passenger=").append(passenger);
+        sb.append(", ").append(passenger);
         sb.append('}');
         return sb.toString();
     }

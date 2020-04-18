@@ -1,4 +1,4 @@
-package StepProjectBooking;
+package StepProjectBooking.classes;
 
 import java.time.LocalDate;
 

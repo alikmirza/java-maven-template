@@ -1,4 +1,4 @@
-package StepProjectBooking;
+package StepProjectBooking.classes;
 
 public class Passenger {
     private int id;

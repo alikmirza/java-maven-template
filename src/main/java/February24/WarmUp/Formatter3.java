@@ -1,6 +1,4 @@
-package February24;
-
-import java.util.Arrays;
+package February24.WarmUp;
 
 public class Formatter3 extends Formatter {
 
