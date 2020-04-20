@@ -13,7 +13,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try(OutputStream os = resp.getOutputStream()){
-            Files.copy(Paths.get("content","home.html"), os);
+            Files.copy(Paths.get("content/html","home.html"), os);
         }
     }
 }

@@ -12,8 +12,10 @@ public class ServerApp {
         handler.addServlet(new ServletHolder(new LoginServlet()),"/login/*");
         handler.addServlet(new ServletHolder(new RegisterServlet()),"/registration/*");
         handler.addServlet(new ServletHolder(new HomeServlet()), "/home/*");
-        handler.addServlet(new ServletHolder(new RedirectServlet("/login")),"/*");
-        //handler.addServlet(new ServletHolder(new RedirectServlet("/home")),"/*");
+        handler.addServlet(new ServletHolder(new RedirectServlet("/login")),"/login.html");
+        handler.addServlet(new ServletHolder(new RedirectServlet("/registration")),"/registration.html");
+        handler.addServlet(new ServletHolder(new RedirectServlet("/home")),"/home.html");
+        handler.addServlet(new ServletHolder(new StaticServlet("css")), "/css/*");
 
         server.setHandler(handler);
 

@@ -16,9 +16,10 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String result = new BufferedReader(new FileReader(new File("content/registration.html"))).lines().collect(Collectors.joining("\n"));
+        String result = new BufferedReader(new FileReader(new File("content/html/registration.html"))).lines().collect(Collectors.joining("\n"));
 
         try (PrintWriter w = resp.getWriter()) {
+            //resp.setContentType("text/plain");
             w.write(result);
         }
     }

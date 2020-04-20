@@ -1,0 +1,8 @@
+.color {
+    background-color: cornflowerblue;
+}
+#colorOfForm {
+    background-color: cornflowerblue;
+    color: cornflowerblue;
+    outline-color: cornflowerblue;
+}
